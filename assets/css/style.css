@@ -1,18 +1,23 @@
+:root {
+  --text-color: #404040;
+  --link-color: #5badf0;
+}
+
 html[theme='dark-mode'] {
   filter: invert(1) hue-rotate(180deg);
 }
 
 body {
   line-height: 1;
-  font: normal 15px/1.5em 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #404040;
+  font: normal 18px/1.5em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--text-color);
   line-height: 1.75;
   letter-spacing: 0.008em;
 }
 
 a {
   text-decoration: none;
-  color: #5badf0;
+  color: var(--link-color);
 }
 
 a:hover {
@@ -144,8 +149,8 @@ nav.navigation a {
   top: 8px;
   right: 6px;
   padding: 8px 12px;
-  color: #5badf0;
-  font-size: 13px;
+  color: var(--link-color);
+  font-size: 15px;
   line-height: 1.35;
   border-radius: 3px;
 }
@@ -154,7 +159,7 @@ nav.navigation a:hover {
 }
 
 nav.navigation a.button {
-  background: #5badf0;
+  background: var(--link-color);
   color: #fff;
   margin-left: 12px;
 }
@@ -171,7 +176,7 @@ nav.navigation a.button {
     top: 8px;
     right: 6px;
     padding: 8px 8px;
-    color: #5badf0;
+    color: var(--link-color);
     font-size: 13px;
     line-height: 1.35;
     border-radius: 3px;
@@ -290,7 +295,7 @@ nav.navigation a.button {
 
 #list-page .title {
   display: inline-block;
-  color: #404040;
+  color: var(--text-color);
   font-size: 20px;
   font-weight: 400;
   margin: 0;
@@ -298,7 +303,7 @@ nav.navigation a.button {
 }
 
 #list-page .title a {
-  color: #404040;
+  color: var(--text-color);
   display: block;
 }
 

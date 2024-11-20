@@ -1,16 +1,17 @@
 <footer id="footer">
-    {{ if .Site.Social }}
+    {{/*  
+    {{ if .Site.Params.Social }}
         {{ partial "social.html" . }}
     {{ end }}
-
+  */}}
     <div class="copyright">
     {{ with .Site.Params.copyright }}
         {{ . | markdownify }}
     {{ else }}
-       © Copyright 
+       Copyright &copy;
        {{ now.Format "2006"}} 
        <span class="split">
-        {{ partial "svgs/heart.svg" (dict "fill" "#bbbbbb" "width" 15 "height" 15 ) }}
+        
        </span>
        {{ .Site.Params.Author }}
     {{ end }}
@@ -24,11 +25,22 @@
 </footer>
 
 {{ range .Site.Params.customJS }}
-    {{ if ( or ( hasPrefix . "http://" ) ( hasPrefix . "https://" ) ) }}
-        <!-- remote js -->
-        <script src="{{ . }}"></script>
+    {{- $href := urls.Parse . -}}
+    {{ if $href.IsAbs }}
+      {{/*  Remote resources  */}}
+      {{ with resources.GetRemote $href }}
+        {{ with .Err }}
+          {{ errorf "%s" . }}
+        {{ else }}
+        <script src="{{ .RelPermalink }}"></script>    
+        {{ end }}
+      {{ else }}
+        {{ errorf "Unable to get remote resource %q" $href }}
+      {{ end }}    
     {{ else }}
-        <!-- local js -->
-        <script src="{{ $.Site.BaseURL }}{{ . }}"></script>
+      {{/*  Local JS  */}}
+      {{ with resources.GetMatch . }}
+        <script src="{{ .RelPermalink }}"></script>
+      {{ end }}
     {{ end }}
 {{ end }}

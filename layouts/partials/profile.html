@@ -1,7 +1,9 @@
 <header class="profile">
     {{ if .Site.Params.avatarLink }}
         <a href="{{ .Site.Params.avatarLink }}">
-          <img class="avatar" alt="avatar" src="{{ "/images/avatar.png" | relURL }}" />
+          {{ with resources.GetMatch "images/avatar.png" }}
+            <img class="avatar" alt="avatar" src="{{ .RelPermalink }}" />
+          {{ end }}
         </a>
     {{ else }}
         <img class="avatar" alt="avatar" src="{{ "/images/avatar.png" | relURL }}" />
