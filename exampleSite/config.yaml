@@ -13,7 +13,8 @@ hasCJKLanguage: true
 permalinks:
   posts: /posts/:title/
 
-paginate: 3
+pagination: 
+  pagerSize: 3
 
 googleAnalytics: your-google-analytics-id
 disqusShortname: your-disqus-shortname
@@ -33,14 +34,20 @@ markup:
     renderer:
       unsafe: true
 
-# Social links in footer, support github,twitter,stackoverflow,facebook
-social:
-  # e.g.
-  github: your-github-link
-  twitter: your-twitter-link
-  stackoverflow: your-stackoverflow-link
-  # facebook: your-facebook-link
-
+menus:
+  main:
+  - identifier: archive
+    name: Posts
+    pageRef: /posts
+    weight: 10
+  - identifier: tags
+    name: Tags
+    pageRef: /tags
+    weight: 20
+  - identifier: about
+    name: About
+    pageRef: /about
+    weight: 30
 
 # Site parameters
 params:
@@ -50,6 +57,14 @@ params:
   bio: Software Engineer
   # Site Description, used in HTML meat
   description: My Blog
+
+  # Social links in footer, support github,twitter,stackoverflow,facebook
+  social:
+    # e.g.
+    github: your-github-link
+    twitter: your-twitter-link
+    stackoverflow: your-stackoverflow-link
+    # facebook: your-facebook-link
 
 
   ###########################################

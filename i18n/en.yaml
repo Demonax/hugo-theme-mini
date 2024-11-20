@@ -1,14 +1,11 @@
 home:
   other: Home
 
-archive:
-  other: Archive
+archive: Archive
 
-tags:
-  other: Tags
+tags: Tags
 
-about:
-  other: About
+about: About
 
 subscribe:
   other: Subscribe
